@@ -24,7 +24,7 @@ export class CommentsComponent implements OnInit, AfterViewInit {
     private postService: PostService,
     private route: ActivatedRoute
   ) { 
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://chat-ng-app.herokuapp.com');
   }
 
   ngOnInit() {

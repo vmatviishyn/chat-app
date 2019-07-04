@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const _ = require('lodash');
+const path = require('path');
 
 const app = express();
 
@@ -45,6 +46,17 @@ app.use('/api/chatapp', friends);
 app.use('/api/chatapp', message);
 app.use('/api/chatapp', image);
 
-server.listen(3000, () => {
-  console.log('Running on port 3000');
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/dist/chat-app'));
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.resolve(
+        __dirname, 'client', 'dist', 'chat-app', 'index.html'
+      )
+    );
+  });
+}
+
+server.listen(process.env.PORT || 3000, () => {
+  console.log('Running');
 });

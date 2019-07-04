@@ -23,7 +23,7 @@ export class PeopleComponent implements OnInit {
     private tokenService: TokenService,
     private router: Router
   ) {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://chat-ng-app.herokuapp.com');
   }
 
   ngOnInit() {

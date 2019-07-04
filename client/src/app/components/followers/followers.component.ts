@@ -17,7 +17,7 @@ export class FollowersComponent implements OnInit {
     private tokenService: TokenService,
     private usersService: UsersService
   ) { 
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://chat-ng-app.herokuapp.com');
   }
 
   ngOnInit() {

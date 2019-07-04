@@ -4,7 +4,7 @@ import { PostService } from 'src/app/services/post.service';
 import io from 'socket.io-client';
 import { FileUploader } from 'ng2-file-upload';
 
-const URL = 'http://localhost:3000/api/chatapp/upload-image';
+const URL = 'https://chat-ng-app.herokuapp.com/api/chatapp/upload-image';
 
 @Component({
   selector: 'app-post-form',
@@ -25,7 +25,7 @@ export class PostFormComponent implements OnInit {
     private fb: FormBuilder,
     private postService: PostService
   ) { 
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://chat-ng-app.herokuapp.com');
   }
 
   ngOnInit() {

@@ -30,7 +30,7 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     private usersService: UsersService,
     private messageService: MessageService
   ) {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://chat-ng-app.herokuapp.com');
   }
 
   ngOnInit() {

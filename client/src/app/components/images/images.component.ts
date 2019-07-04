@@ -4,7 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { TokenService } from 'src/app/services/token.service';
 import io from 'socket.io-client';
 
-const URL = 'http://localhost:3000/api/chatapp/upload-image';
+const URL = 'https://chat-ng-app.herokuapp.com/api/chatapp/upload-image';
 
 @Component({
   selector: 'app-images',
@@ -26,7 +26,7 @@ export class ImagesComponent implements OnInit {
     private userService: UsersService,
     private tokernService: TokenService
   ) { 
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://chat-ng-app.herokuapp.com');
   }
 
   ngOnInit() {
