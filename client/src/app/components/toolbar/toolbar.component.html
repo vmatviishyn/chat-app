@@ -1,66 +1,77 @@
-<nav class="nav-extended">
-  <div class="container">
-    <div class="nav-wrapper">
-      <a class="brand-logo" (click)="goToHome()">Chat App</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="dropdown-button dropdown-trigger" data-target="dropdown">
-          <i class="material-icons notification-icon">notifications</i>
-          <span class="nav-label-icon" *ngIf="count.length > 0">{{ count.length }}</span>
-          <ul id="dropdown" class="dropdown-content col s12 collection">
-            <li class="collection-item avatar" *ngFor="let notification of notifications">
-              <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{notification.senderId.picVersion}}/{{notification.senderId.picId}}" class="circle">
-              <span [ngClass]="notification.read ? isRed : 'unread'">{{ notification.message }}</span>
-              <p class="time">{{ timeFromNow(notification.created) }}</p>
-            </li>
-            <li *ngIf="notifications.length <= 0">
-              <p class="text">No Notifications</p>
-            </li>
-            <p class="secondary-content">
-              <a class="markAll btn" (click)="markAll()">Mark all as read</a>
-            </p>
-          </ul>
-        </li>
-        <li class="dropdown-button dropdown-trigger1" data-target="dropdown1">
-          <i class="material-icons notification-icon">message</i>
-          <span class="nav-label-icon" *ngIf="msgNumber > 0">{{ msgNumber }}</span>
-          <ul id="dropdown1" class="dropdown-content col s12 collection">
-            <li class="collection-item avatar" *ngFor="let chat of chatList" (click)="goToChatPage(chat.receiverId.username)">
-              <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{chat.receiverId.picVersion}}/{{chat.receiverId.picId}}" class="circle">
-              <span class="title">
-                {{ chat.receiverId.username }}
-                <a class="secondary-content">
-                  {{ messageDate(chat.msgId.message[chat.msgId.message.length-1].createdAt) }}
-                </a>
-              </span>
-              <p>
-                {{ chat.msgId.message[chat.msgId.message.length-1].body }}
-                <a 
-                  class="secondary-content" 
-                  *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead 
-                    && chat.receiverId.username !== chat.msgId.message[chat.msgId.message.length-1].receivername">
-                  <i class="material-icons">brightness_1</i>
-                </a>
-                <a class="secondary-content" *ngIf="chat.msgId.message[chat.msgId.message.length-1].isRead">
-                  <i class="material-icons">panorama_fish_eye</i>
-                </a>
-              </p>
-            </li>
-            <li *ngIf="notifications.length <= 0">
-              <p class="text">No Notifications</p>
-            </li>
-            <p class="secondary-content">
-              <a class="markAll btn" (click)="markAllMessages()">Mark all as read</a>
-            </p>
-          </ul>
-        </li>
-        <li><a (click)="logout()">Logout</a></li>
-      </ul>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <a class="brand-logo" (click)="goToHome()">Chat App</a>
+    <span class="toolbar-spacer"></span>
+
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="menu-toggle">
+        <mat-icon class="toolbar-icon" *ngIf="count.length == 0">notifications</mat-icon>
+        <mat-icon class="toolbar-icon" [matBadge]="count.length" matBadgeColor="warn" *ngIf="count.length > 0">notifications</mat-icon>
+      </button>
+
+      <mat-menu #notificationsMenu="matMenu">
+        <button mat-menu-item *ngFor="let notification of notifications">
+          <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{notification.senderId.picVersion}}/{{notification.senderId.picId}}">
+          <span [ngClass]="notification.read ? isRed : 'unread'">{{ notification.message }}</span>
+          <p class="time">{{ timeFromNow(notification.created) }}</p>
+        </button>
+        <span *ngIf="notifications.length <= 0">
+          <p class="menu-empty">No Notifications</p>
+        </span>
+        <span>
+          <button mat-button (click)="markAll()">Mark all as read</button>
+        </span>
+      </mat-menu>
     </div>
-    <div class="nav-content">
-      <div class="nav-div">
+
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="messagesMenu" class="menu-toggle">
+        <mat-icon class="toolbar-icon" *ngIf="msgNumber == 0">message</mat-icon>
+        <mat-icon class="toolbar-icon" [matBadge]="msgNumber" matBadgeColor="warn" *ngIf="msgNumber > 0">message</mat-icon>
+      </button>
+
+      <mat-menu #messagesMenu="matMenu">
+        <button mat-menu-item *ngFor="let chat of chatList" (click)="goToChatPage(chat.receiverId.username)">
+          <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{chat.receiverId.picVersion}}/{{chat.receiverId.picId}}" class="circle">
+          <span class="title">
+            {{ chat.receiverId.username }}
+            <a class="secondary-content">
+              {{ messageDate(chat.msgId.message[chat.msgId.message.length-1].createdAt) }}
+            </a>
+          </span>
+          <p>
+            {{ chat.msgId.message[chat.msgId.message.length-1].body }}
+            <a 
+              class="secondary-content" 
+              *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead 
+                && chat.receiverId.username !== chat.msgId.message[chat.msgId.message.length-1].receivername">
+              <i class="material-icons">brightness_1</i>
+            </a>
+            <a class="secondary-content" *ngIf="chat.msgId.message[chat.msgId.message.length-1].isRead">
+              <i class="material-icons">panorama_fish_eye</i>
+            </a>
+          </p>
+        </button>
+        <span *ngIf="notifications.length <= 0">
+          <p class="menu-empty">No Notifications</p>
+        </span>
+        <span>
+          <button mat-button (click)="markAllMessages()">Mark all as read</button>
+        </span>
+      </mat-menu>
+    </div>
+
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="profileMenu">
         <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{imageVersion}}/{{imageId}}" class="circle responsive-img">
-      </div>
-      <h1 class="profile-name">{{ user.username }}</h1>
+      </button>
+      <mat-menu #profileMenu="matMenu">
+        <h6 class="menu-empty">{{ user.username }}</h6>
+        <button mat-menu-item>
+          <mat-icon>exposure_neg_1</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
     </div>
-  </div>
-</nav>
+  </mat-toolbar-row>
+</mat-toolbar>

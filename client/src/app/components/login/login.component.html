@@ -1,36 +1,84 @@
+
+
+
 <div class="container">
-    <div class="row">
-      <div class="col s10 offset-s1" id="panel">
-        <div class="progress" *ngIf="showSpinner">
-          <div class="indeterminate"></div>
-        </div>
-        <h3 id="title">Login</h3>
-        <div id="errorMsg" *ngIf="errorMessage">
-          <span>{{ errorMessage }}</span>
-        </div>
-        <form class="col s12" [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="login-username" type="text" formControlName="username">
-              <label for="-login-username">Username</label>
-              <span class="error" *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
-                Username is required
+  <div class="row">
+    <div class="col s12">
+      <mat-card class="chat-tabs">
+        <mat-card-header>
+          <div class="chat-tabs--title">
+            <mat-card-title>
+              <i class="material-icons chat-login-icon">
+                recent_actors
+              </i>
+            </mat-card-title>
+            <mat-card-title>
+              <span class="text--primary">Welcome Back,</span>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <span class="text--secondary">
+                Sign in to continue
               </span>
+            </mat-card-subtitle>
+          </div>
+        </mat-card-header>
+      
+        <mat-card-content>
+          <div class="container">
+            <div class="row">
+              <div class="col s12" id="panel">
+        
+                <div class="progress" *ngIf="showSpinner">
+                  <div class="indeterminate"></div>
+                </div>
+        
+                <div id="errorMsg" *ngIf="errorMessage">
+                  <span>{{ errorMessage }}</span>
+                </div>
+        
+                <form class="col s12" [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="login-username" type="text" formControlName="username">
+                      <label for="-login-username">Username</label>
+                      <span class="error" *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+                        Username is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="login-password" type="password" formControlName="password">
+                      <label for="login-password">Password</label>
+                      <span class="error" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                        Password is required
+                      </span>
+                    </div>
+                  </div>
+        
+                  <button 
+                    class="chat-login-btn"
+                    mat-raised-button 
+                    color="primary"
+                    [disabled]="!loginForm.valid">
+                    Login
+                  </button>
+                </form>
+        
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="login-password" type="password" formControlName="password">
-              <label for="login-password">Password</label>
-              <span class="error" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
-                Password is required
-              </span>
-            </div>
-          </div>
-          <button class="btn waves-effect" id="loginbtn" [disabled]="!loginForm.valid">
-            Login
-          </button>
-        </form>
-      </div>
+
+          <span class="text--secondary">
+            New user? 
+          </span>
+          <span class="text--primary text--bold">
+            <a [routerLink]="['/signup']">
+              Sign Up
+            </a>
+          </span>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
+</div>

@@ -1,31 +1,32 @@
 #panel {
-  padding: 0;
+  margin-top: 20px;
 }
 
-#loginbtn {
+.chat-tabs {
+  margin: 200px auto;
+  max-width: 400px;
+  text-align: center;
+}
+
+mat-card-header {
+  justify-content: center;
+}
+
+.chat-login-icon {
+  font-size: 60px;
+  color: #00adb5;
+}
+
+.chat-login-btn {
   float: right;
-  margin-right: 10px;
-  background-color: #64b5f6;
   font-weight: 500;
-}
-
-#title {
-  color: #64b5f6;
-  padding: 8px;
-  margin-top: 0;
-  font-weight: 700;
-  text-align: center;  
-}
-
-form {
-  padding: 0;
-  border-radius: 3px;
-  box-sizing: border-box;
-  margin: 0 20px 0 20px;
+  width: 100%;
+  background-color: #00adb5;
+  color: #eeeeee;
 }
 
 .error {
-  color: red;
+  color: #64b5f6;
 }
 
 .indeterminate {
@@ -50,5 +51,8 @@ form {
   position: relative;
   float: left;
   font-size: 15px;
-  color: red;
+  color: #64b5f6;
 }
+
+
+

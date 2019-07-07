@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgxAutoScrollModule } from 'ngx-auto-scroll';
 import { FileUploadModule } from 'ng2-file-upload';
 
@@ -26,6 +24,7 @@ import { MessageService } from '../services/message.service';
 import { ImagesComponent } from '../components/images/images.component';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
 import { ChangePasswordComponent } from '../components/change-password/change-password.component';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
@@ -47,12 +46,10 @@ import { ChangePasswordComponent } from '../components/change-password/change-pa
     ChangePasswordComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
     ReactiveFormsModule,
-    RouterModule,
     NgxAutoScrollModule,
     FileUploadModule,
+    SharedModule,
   ],
   providers: [
     TokenService,
