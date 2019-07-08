@@ -1,9 +1,5 @@
-#panel {
-  margin-top: 20px;
-}
-
 .chat-tabs {
-  margin: 200px auto;
+  margin: 150px auto;
   max-width: 400px;
   text-align: center;
 }
@@ -26,11 +22,11 @@ mat-card-header {
 }
 
 .error {
-  color: #64b5f6;
+  color: #00adb5;
 }
 
 .indeterminate {
-  background-color: #64b5f6 !important;
+  background-color: #00adb5 !important;
 }
 
 .input-field {
@@ -51,7 +47,7 @@ mat-card-header {
   position: relative;
   float: left;
   font-size: 15px;
-  color: #64b5f6;
+  color: #00adb5;
 }
 
 

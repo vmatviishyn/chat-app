@@ -9,7 +9,7 @@
         <mat-icon class="toolbar-icon" [matBadge]="count.length" matBadgeColor="warn" *ngIf="count.length > 0">notifications</mat-icon>
       </button>
 
-      <mat-menu #notificationsMenu="matMenu">
+      <mat-menu #notificationsMenu="matMenu" xPosition="before">
         <button mat-menu-item *ngFor="let notification of notifications">
           <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{notification.senderId.picVersion}}/{{notification.senderId.picId}}">
           <span [ngClass]="notification.read ? isRed : 'unread'">{{ notification.message }}</span>
@@ -30,7 +30,7 @@
         <mat-icon class="toolbar-icon" [matBadge]="msgNumber" matBadgeColor="warn" *ngIf="msgNumber > 0">message</mat-icon>
       </button>
 
-      <mat-menu #messagesMenu="matMenu">
+      <mat-menu #messagesMenu="matMenu" xPosition="before">
         <button mat-menu-item *ngFor="let chat of chatList" (click)="goToChatPage(chat.receiverId.username)">
           <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{chat.receiverId.picVersion}}/{{chat.receiverId.picId}}" class="circle">
           <span class="title">
@@ -65,7 +65,7 @@
       <button mat-icon-button [matMenuTriggerFor]="profileMenu">
         <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{imageVersion}}/{{imageId}}" class="circle responsive-img">
       </button>
-      <mat-menu #profileMenu="matMenu">
+      <mat-menu #profileMenu="matMenu" xPosition="before">
         <h6 class="menu-empty">{{ user.username }}</h6>
         <button mat-menu-item>
           <mat-icon>exposure_neg_1</mat-icon>

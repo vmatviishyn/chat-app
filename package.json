@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
+    "start": "nodemon server.js",
     "client-install": "npm install --prefix client",
     "client": "npm run start --prefix client",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm run client-install && npm run build --prefix client"
