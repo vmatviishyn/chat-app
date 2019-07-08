@@ -5,6 +5,10 @@ body {
   background-color: #eeeeee;
 }
 
+.btn {
+  background-color: #00adb5;
+}
+
 .text--primary {
   color: #222831;
 }

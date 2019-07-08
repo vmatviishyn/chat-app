@@ -1,24 +1,14 @@
-.postDiv {
-  background-color: #64b5f6;
+.example-card {
+  border-radius: 10px !important;
+  margin-top: 16px;
+  box-shadow: none;
 }
 
-form {
-  background-color: #fff;
-}
-
-.formDiv {
-  margin: 0px 20px 0px 20px;
-}
-
-.addImageBtn {
-  margin-bottom: 5px;
+.file-field input[type="file"] {
+  width: 70% !important;
 }
 
 .postBtn {
   float: right;
   margin-bottom: 5px;
-}
-
-.file-field input[type="file"] {
-  width: 70% !important;
 }

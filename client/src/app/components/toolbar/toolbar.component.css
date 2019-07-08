@@ -3,6 +3,14 @@
   margin: 0 10px;
 }
 
+mat-toolbar {
+  background-color: #eeeeee;
+}
+
+.toolbar-actions {
+  margin: 0 5px;
+}
+
 .toolbar-spacer {
   flex: 1 1 auto;
 }
