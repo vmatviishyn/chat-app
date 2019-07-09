@@ -5,38 +5,54 @@
     <div class="col s12 m4 l3">
       <app-side></app-side>
     </div>
-    <div class="col s12 m8 l9">
+    <div class="col s12 m8 l9" style="margin-top: 45px;">
       <div class="row">
-        <div class="col s6">
-          <div class="file-field input-field">
-            <div class="btn">
-              <span>File</span>
-              <input 
-                type="file" 
-                ng2FileSelect 
-                [uploader]="uploader" 
-                (onFileSelected)="onFileSelected($event)">
-            </div>
-            <div class="file-path-wrapper">
-              <input type="text" class="file-path validate" id="filePath">
-            </div>
-          </div>
-        </div>
-        <div class="col s6">
-          <div class="file-field input-field">
-              <a class="waves-effect waves-light btn" (click)="upload()">
-                <i class="material-icons left">image</i>
-                Upload Image
-              </a>
-          </div>
+        <div class="col s12">
+          <mat-card class="example-card">
+            <mat-card-content>
+              <div class="file-field input-field">
+                <div class="upload-form">
+                  <div class="upload-form-file-btn">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                          <span>File</span>
+                          <input 
+                            type="file" 
+                            ng2FileSelect 
+                            [uploader]="uploader" 
+                            (onFileSelected)="onFileSelected($event)">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input type="text" class="file-path validate" id="filePath">
+                        </div>
+                      </div>
+                  </div>
+                  <div class="upload-form-upload-btn">
+                    <div class="file-field input-field">
+                      <a class="waves-effect waves-light btn" (click)="upload()">
+                        <i class="material-icons left">image</i>
+                        Upload Image
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
         </div>
       </div>
       <div class="row">
         <div class="col s12 m6 l4" *ngFor="let image of images">
-          <div class="item-img-wrap imgDiv">
-            <img class="imgCircle" src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{ image.imgVersion }}/{{ image.imgId }}">
-            <button class="btn imgBtn" (click)="setProfileImage(image)">Set As Profile</button>
-          </div>
+          <mat-card class="photo-card">
+            <mat-card-content>
+              <div class="card-image">
+                <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{ image.imgVersion }}/{{ image.imgId }}" class="imgCircle">
+              </div>
+            </mat-card-content>
+            <mat-card-actions class="actions">
+              <button mat-button class="btn imgBtn" (click)="setProfileImage(image)">Set As Profile</button>
+            </mat-card-actions>
+          </mat-card>
         </div>
       </div>
     </div>

@@ -7,6 +7,4 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./streams.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class StreamsComponent { 
-  test = '#00adb5';
-}
+export class StreamsComponent { }

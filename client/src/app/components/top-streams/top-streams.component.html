@@ -1,27 +1,33 @@
-<ul class="collection col s12 m12 l10" *ngFor="let post of topPosts">
-    <li class="collection-item avatar">
-      <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt="" class="circle">
-      <span class="title">{{ post.username }}</span>
-      <p class="time">{{ timeFromNow(post.created) }}
-        <!-- <br> Country -->
-      </p>
-    </li>
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <!-- <div class="card-image">
-            <img class="postImage" src="https://live.staticflickr.com/7541/15680953385_3d603991ab_b.jpg" alt="">
-          </div> -->
-          <div class="card-content">
-            <p>{{ post.post }}</p>
-          </div>
-          <div class="card-action">
+<div class="container-fluid">
+  <div class="row" style="margin: 0;">
+    <div class="col s12 m12 l12" style="padding: 0;">
+      <mat-card class="example-card" *ngFor="let post of topPosts">
+        <mat-card-header>
+          <img mat-card-avatar src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" class="card-image">
+          <mat-card-title>{{ post.username }}</mat-card-title>
+          <mat-card-subtitle>
+            <p>{{ timeFromNow(post.created) }}
+              <br> {{ post.user.country }}
+            </p>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <div *ngIf="post.imgId">
+          <img mat-card-image src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{post.imgVersion}}/{{post.imgId}}">
+        </div>
+        <mat-card-content>
+          <p>{{ post.post }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>
             <i class="material-icons" (click)="likePost(post)" [ngClass]="(!checkInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked'">thumb_up</i>
             <span class="iconSpan">{{ post.totalLikes }}</span>
+          </button>
+          <button mat-button>
             <i class="material-icons" (click)="openCommentBox(post)" [ngClass]="(!checkInLikesArray(post.comments, user.username)) ? 'notLiked' : 'liked'">chat</i>
             <span class="iconSpan">{{ post.comments.length }}</span>
-          </div>
-        </div>
-      </div>
+          </button>
+        </mat-card-actions>
+      </mat-card>
     </div>
-  </ul>
+  </div>
+</div>

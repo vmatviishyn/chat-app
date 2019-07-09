@@ -7,6 +7,7 @@ body {
 
 .btn {
   background-color: #00adb5;
+  color: #fff;
 }
 
 .text--primary {
@@ -42,4 +43,8 @@ body {
 
 ::-webkit-scrollbar-thumb:window-inactive {
   background-color: #00adb5;
+}
+
+.mat-menu-panel {
+  max-width: 350px !important;
 }

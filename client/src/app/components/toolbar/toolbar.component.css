@@ -17,6 +17,7 @@ mat-toolbar {
 
 .brand-logo {
   color: #00adb5;
+  cursor: pointer;
 }
 
 .menu-empty {
@@ -25,4 +26,35 @@ mat-toolbar {
 
 .menu-toggle:focus .toolbar-icon {
   color: #eeeeee !important;
+}
+
+.mat-menu-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 400px;
+}
+
+.mat-menu-panel {
+  max-width: 500px !important;
+}
+
+.time {
+  margin: 0;
+}
+
+.image-name {
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.message p {
+  margin-right: 5px;
 }

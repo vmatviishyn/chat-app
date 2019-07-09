@@ -5,23 +5,25 @@
     <div class="col s12 m4 l3">
       <app-side></app-side>
     </div>
-    <div class="col s12 m8 l9">
+    <div class="col s12 m8 l9" style="margin-top: 45px;">
       <div class="row" *ngIf="following.length > 0">
-        <div class="col s12 m6 l4 cardDiv" *ngFor="let user of following">
-          <div class="card">
+        <div class="col s12 m6 l4" *ngFor="let user of following">
+          <mat-card class="example-card">
             <a>
               <div class="card-image imgDiv">
                 <img src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{user.userFollowed.picVersion}}/{{user.userFollowed.picId}}" class="imgCircle responsive-img">
               </div>
             </a>
-            <div class="card-action">
-              <h3 class="card-title">
+            <mat-card-content>
+              <h5 class="card-title">
                 {{ user.userFollowed.username }}
-              </h3>
+              </h5>
               <p *ngIf="user.userFollowed.country">{{ user.userFollowed.country }}</p>
+            </mat-card-content>
+            <mat-card-actions class="actions">
               <button class="btn" (click)="unfollowUser(user.userFollowed)">Unfollow</button>
-            </div>
-          </div>
+            </mat-card-actions>
+          </mat-card>
         </div>
       </div>
       <div class="row" *ngIf="following.length <= 0">
