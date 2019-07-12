@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import _ from 'lodash';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
+export class MessageComponent implements OnInit, AfterViewInit {
   @Input() usersOnline;
   receiver: string;
   user: any;
@@ -22,13 +22,13 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
   typingMessage;
   typing = false;
   isOnline = false;
-  
+
   constructor(
     private tokenService: TokenService,
     private messageService: MessageService,
     private route: ActivatedRoute,
     private userService: UsersService
-  ) { 
+  ) {
     this.socket = io('https://chat-ng-app.herokuapp.com');
   }
 
@@ -54,22 +54,6 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
         this.typing = false;
       }
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    const title = document.querySelector('.nameCol');
-
-
-    if (changes.usersOnline.currentValue.length > 0) {
-      const result = _.indexOf(changes.usersOnline.currentValue, this.receiver);
-      if (result > -1) {
-        this.isOnline = true;
-        (title as HTMLElement).style.marginTop = '10px';
-      } else {
-        this.isOnline = false;
-        (title as HTMLElement).style.marginTop = '20px';
-      }
-    }
   }
 
   ngAfterViewInit() {

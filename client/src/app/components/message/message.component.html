@@ -1,71 +1,71 @@
 <div class="row">
-  <div class="col s12" [ngClass]="isOnline ? 'chatHeader' : ''">
+  <div class="col s12">
     <div class="row">
-      <div class="card">
-        <div class="valign-wrapper" style="background: #64b5f6 !important;">
-          <div class="col s12 imgCol">
-            <img *ngIf="receiverData" src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{receiverData.picVersion}}/{{receiverData.picId}}" class="imgCircle">
-          </div>
-          <div class="row">
-            <div class="col s10 nameCol">
-              <span>
-                {{ receiver }}
-                <p class="isOnline" *ngIf="isOnline">Online</p>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <img mat-card-avatar *ngIf="receiverData" src="https://res.cloudinary.com/vmatviishyn/image/upload/v{{receiverData.picVersion}}/{{receiverData.picId}}" class="imgCircle">
+          <mat-card-title>{{ receiver }}</mat-card-title>
+          <mat-card-subtitle>
+            <p class="isOnline" *ngIf="isOnline">Online</p>
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
     </div>
   </div>
-  <div class="col s12 rowDiv" ngx-auto-scroll lock-y-offset="10" observe-attribute>
+
+  <div class="col s12">
     <div class="row">
       <div class="col s12">
-        <div class="message-wrapper" *ngFor="let message of messagesArray">
-          <div class="left" *ngIf="user.username !== receiver && user.username !== message.sendername">
-            <div class="chat-bubble left slide-left">
-              <div class="message">{{ message.body }}</div>
-            </div>
-          </div>
+        <mat-card class="example-card rowDiv">
+          <mat-card-content class="card-content" ngx-auto-scroll lock-y-offset="10" observe-attribute>
+            <div class="message-wrapper" *ngFor="let message of messagesArray">
+              <div class="left" *ngIf="user.username !== receiver && user.username !== message.sendername">
+                <div class="chat-bubble left slide-left">
+                  <div class="message">{{ message.body }}</div>
+                </div>
+              </div>
 
-          <div class="right" *ngIf="user.username === message.sendername">
-            <div class="chat-bubble right slide-right">
-              <div class="message">{{ message.body }}</div>
-            </div>
-          </div>
+              <div class="right" *ngIf="user.username === message.sendername">
+                <div class="chat-bubble right slide-right">
+                  <div class="message">{{ message.body }}</div>
+                </div>
+              </div>
 
-          <div class="cf"></div>
-        </div>
-        <div class="left" *ngIf="typing">
-          <div class="chat-bubble left slide-left">
-            <div class="message">
-              {{ receiver }} is typing ...
+              <div class="cf"></div>
             </div>
-          </div> 
-        </div>
+            <div class="left" *ngIf="typing">
+              <div class="chat-bubble left slide-left">
+                <div class="message">
+                  {{ receiver }} is typing ...
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="card">
+              <div class="inputRow">
+                <form (ngSubmit)="onSubmit()" class="message-form">
+                  <div class="input-field inputField">
+                    <textarea
+                      name="message"
+                      [(ngModel)]="message"
+                      class="materialize-textarea inputBox"
+                      (keypress)="isTyping()">
+                    </textarea>
+                  </div>
+                  <div class="input-field">
+                    <button class="suffix btn send-btn">
+                      <mat-icon class="send-btn-icon">send</mat-icon>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </mat-card-actions>
+        </mat-card>
       </div>
     </div>
   </div>
 
-  <div class="col s12" style="margin: 0px;">
-    <div class="row">
-      <div class="card" style="height: 55px;">
-        <div class="inputRow">
-          <form (ngSubmit)="onSubmit()">
-            <div class="input-field inputField col s10">
-              <textarea 
-                name="message" 
-                [(ngModel)]="message" 
-                class="materialize-textarea inputBox"
-                (keypress)="isTyping()">
-              </textarea>
-            </div>
-            <div class="input-field col s1">
-              <button class="suffix btn">Send</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </div>

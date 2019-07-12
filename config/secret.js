@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'production' ) {
   };
 } else {
   module.exports = {
-    url: 'mongodb://localhost:27017/chatapp',
+    url: 'mongodb://heroku_rx70cqhm:q1fbklf710kerdj3mcj0mdcilt@ds347367.mlab.com:47367/heroku_rx70cqhm',
     secret: 'myjsonsecret',
   };
 }
