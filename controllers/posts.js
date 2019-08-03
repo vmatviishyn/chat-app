@@ -94,7 +94,6 @@ module.exports = {
       .sort({ created: -1 });
 
       const top = await Post.find({ 
-        totalLikes: { $gte: 2 },
         created: { $gte: today.toDate(), $lt: year.toDate() } 
       })
       .populate('user')
