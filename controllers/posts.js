@@ -86,16 +86,16 @@ module.exports = {
   async getAllPosts(req, res) {
     try {
       const today = moment().startOf('day');
-      const tomorrow = moment(today).add(1, 'days');
+      const year = moment(today).add(360, 'days');
       const posts = await Post.find({
-        created: { $gte: today.toDate(), $lt: tomorrow.toDate() }
+        created: { $gte: today.toDate(), $lt: year.toDate() }
       })
       .populate('user')
       .sort({ created: -1 });
 
       const top = await Post.find({ 
         totalLikes: { $gte: 2 },
-        created: { $gte: today.toDate(), $lt: tomorrow.toDate() } 
+        created: { $gte: today.toDate(), $lt: year.toDate() } 
       })
       .populate('user')
       .sort({ created: -1 });
