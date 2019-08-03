@@ -86,15 +86,14 @@ module.exports = {
   async getAllPosts(req, res) {
     try {
       const today = moment().startOf('day');
-      const year = moment(today).add(360, 'days');
       const posts = await Post.find({
-        created: { $gte: today.toDate(), $lt: year.toDate() }
+        created: { $gte: today.toDate() }
       })
       .populate('user')
       .sort({ created: -1 });
 
       const top = await Post.find({ 
-        created: { $gte: today.toDate(), $lt: year.toDate() } 
+        created: { $gte: today.toDate() } 
       })
       .populate('user')
       .sort({ created: -1 });
@@ -109,7 +108,7 @@ module.exports = {
           );
         });
       }
-      
+
       return res
         .status(HttpStatus.OK)
         .json({ message: 'All posts', posts, top });
