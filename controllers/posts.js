@@ -87,13 +87,13 @@ module.exports = {
     try {
       const today = moment().startOf('day');
       const posts = await Post.find({
-        created: { $gte: today.toDate() }
+        totalLikes: { $gte: 0 },
       })
       .populate('user')
       .sort({ created: -1 });
 
       const top = await Post.find({ 
-        created: { $gte: today.toDate() } 
+        totalLikes: { $gte: 0 },
       })
       .populate('user')
       .sort({ created: -1 });
