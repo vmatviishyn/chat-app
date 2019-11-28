@@ -12,7 +12,8 @@ const allowedOrigins = [
   'ionic://localhost',
   'http://localhost',
   'http://localhost:8080',
-  'http://localhost:8100'
+  'http://localhost:8100',
+  'https://chat-ng-app.herokuapp.com/api/chatapp',
 ];
 
 app.use(cors());
